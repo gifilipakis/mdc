@@ -170,7 +170,7 @@ prob_salarioB = P(salario_B, tal_que (sexo_f , probSalarioSexo ))
 prob_salarioA =  P(salario_A, tal_que (sexo_f , probSalarioSexo )) 
 # print (prob_salarioA)
 
-array_ecolaridade = []
+array_escolaridade = []
 array_frequencia = []
 array_docs = []
 array_problemas = []
@@ -182,7 +182,7 @@ def read_archive():
         x = linha.split(",")
         # print(x)
         x.pop(0)
-        array_ecolaridade.append(x[0])
+        array_escolaridade.append(x[0])
         array_frequencia.append(x[1])
         array_docs.append(x[2])
         array_problemas.append(x[3])
@@ -205,7 +205,8 @@ def normalizacao(array):
     return novo_array
         
 # array_docs = []
-normalizacao(array_docs)
+normalizacao(array_escolaridade)
+#print(normalizacao(array_escolaridade))
 
 # array_teste = normalizacao(array_docs)
 # print(array_teste)
@@ -226,5 +227,12 @@ PFerremantas = ProbDist(
     Only_Office = normalizacao(array_docs).count("only office"),
     Overleaf = normalizacao(array_docs).count("overleaf"),
 )
+PEscolaridade = ProbDist(
+    Superior_completo = array_escolaridade.count("Ensino Superior Incompleto"),
+    Superior_incompleto = array_escolaridade.count("Ensino Superior Incompleto"),
+    Medio_completo = array_escolaridade.count("Ensino Médio Completo"),
+    Pos_graduacao = array_escolaridade.count("Pós-Graduação"),
+)
 
-print(PDSexo)
+
+print(array_escolaridade)
